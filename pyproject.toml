@@ -1,0 +1,76 @@
+[tool.poetry]
+name = "fastapi-orgs"
+version = "0.1.0"
+description = "Ready-to-use and customizable organizations management for FastAPI"
+authors = ["Flynn <ling7334@gmail.com>"]
+license = "MIT"
+
+[[tool.poetry.source]]
+name="aliyun"
+url="https://mirrors.aliyun.com/pypi/simple"
+default=true
+
+[tool.isort]
+profile = "black"
+
+[[tool.mypy.overrides]]
+module = "motor.*"
+ignore_missing_imports = true
+
+[[tool.mypy.overrides]]
+module = "passlib.*"
+ignore_missing_imports = true
+
+[[tool.mypy.overrides]]
+module = "fastapi_orgs_db_mongodb.*"
+ignore_missing_imports = true
+
+[[tool.mypy.overrides]]
+module = "fastapi_orgs_db_sqlalchemy.*"
+ignore_missing_imports = true
+
+[[tool.mypy.overrides]]
+module = "fastapi_orgs_db_tortoise.*"
+ignore_missing_imports = true
+
+[[tool.mypy.overrides]]
+module = "fastapi_orgs_db_ormar.*"
+ignore_missing_imports = true
+
+[tool.poetry.dependencies]
+python = "^3.10"
+fastapi = "~0.74"
+
+[tool.poetry.dev-dependencies]
+flake8 = "^4.0.0"
+black = "^22.1.0"
+isort = "^5.10.1"
+mypy = "^0.931"
+pytest = "^7.0.0"
+codecov = "^2.1.12"
+pytest-cov = "^3.0.0"
+uvicorn = "^0.17.5"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[project.optional-dependencies]
+sqlalchemy = [
+    "fastapi-orgs-db-sqlalchemy >=1.1.0,<2.0.0",
+]
+sqlalchemy2 = [
+    "fastapi-orgs-db-sqlalchemy >=2.0.0",
+]
+mongodb = [
+    "fastapi-orgs-db-mongodb >=1.1.0",
+]
+tortoise-orm = [
+    "fastapi-orgs-db-tortoise >=1.1.0",
+]
+ormar = [
+    "fastapi-orgs-db-ormar >=1.0.0",
+]
+
+[project.urls]
+Documentation = "https://fastapi-orgs.github.io/fastapi-orgs/"
